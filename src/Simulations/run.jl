@@ -185,16 +185,7 @@ function run!(sim; pickup=false, callbacks=[])
             [callback.schedule(model) && callback(sim)                    for callback in values(sim.callbacks)]
         end
 
-        sim.progress(sim)
-
-        sim.Δt isa TimeStepWizard && update_Δt!(sim.Δt, model)
-
-        time_after = time()
-        sim.run_time += time_after - time_before
-    end
-
-    return nothing
-end
+# Plot-Fkt, die aus der Schleife heraus den Plot erzeugen sollte
 
 # function plot_tracer(simulation)
 #             c = simulation.model.tracers.c
@@ -206,3 +197,15 @@ end
 #         end
 
 # simulation.callbacks[:plotter] = Callback(plot_tracer, schedule=IterationInterval(10))
+
+        sim.progress(sim)
+
+        sim.Δt isa TimeStepWizard && update_Δt!(sim.Δt, model)
+
+        time_after = time()
+        sim.run_time += time_after - time_before
+    end
+
+    return nothing
+end
+
