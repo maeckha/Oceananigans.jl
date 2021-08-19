@@ -196,13 +196,13 @@ function run!(sim; pickup=false, callbacks=[])
     return nothing
 end
 
-function plot_tracer(simulation)
-            c = simulation.model.tracers.c
-            fig = Figure(resolution=(700, 450), fontsize=18, font="sans")
-            ax = fig[1, 1] = Axis(fig, xlabel="x", ylabel="y")
-            cMatrixTrimmed = interior(model.tracers.c)[:, :, 1]'
-            CairoMakie.heatmap!(ax, xs, ys, cMatrixTrimmed, colormap = :deep)
-            display(fig)
-        end
+# function plot_tracer(simulation)
+#             c = simulation.model.tracers.c
+#             fig = Figure(resolution=(700, 450), fontsize=18, font="sans")
+#             ax = fig[1, 1] = Axis(fig, xlabel="x", ylabel="y")
+#             cMatrixTrimmed = interior(model.tracers.c)[:, :, 1]'
+#             CairoMakie.heatmap!(ax, xs, ys, cMatrixTrimmed, colormap = :deep)
+#             display(fig)
+#         end
 
-simulation.callbacks[:plotter] = Callback(plot_tracer, schedule=IterationInterval(10))
+# simulation.callbacks[:plotter] = Callback(plot_tracer, schedule=IterationInterval(10))
